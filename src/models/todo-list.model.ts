@@ -6,6 +6,8 @@ export class TodoList {
 		new TodoItem('and salmon'),
 	]
 
+	lastAppliedFilter: string
+
 	count() {
 		const all = this.todos.length
 		const active = this.todos.filter(todo => !todo.completed).length
@@ -19,6 +21,8 @@ export class TodoList {
 	}
 
 	filter(filter?: string) {
+		this.lastAppliedFilter = filter
+
 		if (!filter) return this.todos
 
 		return this.todos.filter(todo =>

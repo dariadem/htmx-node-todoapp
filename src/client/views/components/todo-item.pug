@@ -9,10 +9,10 @@ li.todo-item.box(id='todo-' + todo.id, class={completed: todo.completed === true
 
     .todo-item-actions
         if todo.completed
-            button.button.is-rounded.is-success(hx-patch='/todos/mark-as-uncompleted/' + todo.id, hx-target='#todo-' + todo.id, hx-swap='outerHTML')
+            button.button.is-rounded.is-success(hx-post='/todos/mark-as-uncompleted/' + todo.id, hx-target='#todo-list', hx-swap='outerHTML')
                 span &check;
         else
-            button.button.is-rounded.is-success.is-outlined.is-light(hx-patch='/todos/mark-as-completed/' + todo.id, hx-target='#todo-' + todo.id, hx-swap='outerHTML')
+            button.button.is-rounded.is-success.is-outlined.is-light(hx-post='/todos/mark-as-completed/' + todo.id, hx-target='#todo-list', hx-swap='outerHTML')
                 span &check;
 
         button.todo-item-delete-button.button.is-rounded.is-danger.is-outlined(hx-delete='/todos/' + todo.id, hx-target='#todo-' + todo.id, hx-swap='outerHTML')

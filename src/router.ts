@@ -9,6 +9,8 @@ const componentPath = path.join(__dirname, 'client', 'views', 'components')
 
 const todoList = new TodoList()
 
+// TODO refactor this mess
+
 function compileCountDependableComponents(
 	filter: string = todoList.appliedFilter
 ) {

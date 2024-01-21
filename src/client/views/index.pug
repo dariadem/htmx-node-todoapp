@@ -3,14 +3,25 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title TodoMVC - HTMX, Node.js
+        title todoapp - HTMX, Node.js
         link(rel="stylesheet" href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css')
         link(rel='stylesheet' href='/styles/style.css')
         script(src='https://unpkg.com/htmx.org@1.9.10')
-    body
+    body        
         section.section
-            .container.px-4.is-small
+            .container
+                .block
+                    h1.title.is-3 htmx todoapp
                 include components/add-form
                 include components/filter
                 include components/todo-list
                 include components/list-actions
+
+        footer.footer
+            .container.content 
+                ul 
+                    li <strong>htmx</strong> for interactivity
+                    li <strong>node.js</strong> for backend
+                    li <strong>bulma</strong> for utility css classes
+
+                a.has-text-grey-dark.is-underlined(href='https://github.com/dariadem/htmx-node-todoapp', target='_blank') github repo &gt;

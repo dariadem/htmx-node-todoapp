@@ -1,0 +1,3 @@
+form#add-form.add-todo-form(hx-post='/todos/add', hx-target='#todo-list', hx-swap='afterbegin', hx-swap-oob='true')
+    input.add-todo-form-input.input.is-medium(type='text', name='todoName', placeholder='what do you need to do?', required='true')
+    button.add-todo-form-button.button.is-medium.is-info(type='submit') add

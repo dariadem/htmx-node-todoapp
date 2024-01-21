@@ -1,0 +1,8 @@
+//- TODO
+//- hide if action unavailable
+
+#list-actions.list-actions.is-flex.is-justify-content-end
+
+    button.button.is-warning.is-small(hx-post='/todos/clear-completed', hx-target='#todo-list', hx-swap='outerHTML') Clear completed
+
+    button.button.is-danger.is-small(hx-post='/todos/clear', hx-target='#todo-list', hx-swap='outerHTML') Clear all

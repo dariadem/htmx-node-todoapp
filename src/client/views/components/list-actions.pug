@@ -1,10 +1,10 @@
 #list-actions.list-actions.is-flex.is-justify-content-end(hx-target='#todo-list', hx-swap='outerHTML', hx-swap-oob='true')
 
     if count.active !== 0
-        button.button.is-primary.is-light.is-small(hx-post='/todos/mark-all-as-completed') Complete all
+        button.button.is-primary.is-light.is-small(hx-post='/todos/mark-all-as-completed') complete all
 
     if count.completed !== 0
-        button.button.is-warning.is-light.is-small(hx-post='/todos/clear-completed') Clear completed
+        button.button.is-warning.is-light.is-small(hx-post='/todos/clear-completed') clear completed
 
     if count.all !== 0
-        button.button.is-danger.is-light.is-small(hx-post='/todos/clear') Clear all
+        button.button.is-danger.is-light.is-small(hx-post='/todos/clear') clear all

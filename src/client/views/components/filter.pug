@@ -2,18 +2,18 @@
     ul 
         li(class={'is-active': filter === undefined})
 
-            a(hx-get='/todos', hx-target='#todo-list', hx-swap='outerHTML') All&nbsp;
+            a(hx-get='/todos', hx-target='#todo-list', hx-swap='outerHTML') all&nbsp;
             
                 span.count (#{count.all})
 
         li(class={'is-active': filter === 'active'})
 
-            a(hx-get='/todos?filter=active', hx-target='#todo-list', hx-swap='outerHTML') Active&nbsp;
+            a(hx-get='/todos?filter=active', hx-target='#todo-list', hx-swap='outerHTML') active&nbsp;
 
                 span.count (#{count.active})
 
         li(class={'is-active': filter === 'completed'})
 
-            a(hx-get='/todos?filter=completed', hx-target='#todo-list', hx-swap='outerHTML') Completed&nbsp;
+            a(hx-get='/todos?filter=completed', hx-target='#todo-list', hx-swap='outerHTML') completed&nbsp;
 
                 span.count (#{count.completed})

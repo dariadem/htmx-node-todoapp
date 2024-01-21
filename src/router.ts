@@ -10,7 +10,7 @@ const componentPath = path.join(__dirname, 'client', 'views', 'components')
 const todoList = new TodoList()
 
 function compileCountDependableComponents(
-	filter: string = todoList.lastAppliedFilter
+	filter: string = todoList.appliedFilter
 ) {
 	const compileFilter = pug.compileFile(
 		path.join(componentPath, 'filter.pug')
@@ -39,10 +39,10 @@ router.get('/todos', (request, response) => {
 })
 
 router.post('/todos/add', (request, response) => {
-	const todo = todoList.add(request.body.todoName)
-	const compile = pug.compileFile(path.join(componentPath, 'todo-item.pug'))
+	todoList.add(request.body.todoName)
+	const compile = pug.compileFile(path.join(componentPath, 'todo-list.pug'))
 
-	let markup = compile({ todo })
+	let markup = compile({ todos: todoList.filteredTodos })
 
 	const compileForm = pug.compileFile(
 		path.join(componentPath, 'add-form.pug')
@@ -95,19 +95,15 @@ router.post('/todos/clear', (request, response) => {
 })
 
 router.post('/todos/mark-as-completed/:id', (request, response) => {
-	todoList.markAsCompleted(request.params.id)
+	const todos = todoList.markAsCompleted(request.params.id)
 	const compile = pug.compileFile(path.join(componentPath, 'todo-list.pug'))
-	const markup =
-		compile({ todos: todoList.filter(todoList.lastAppliedFilter) }) +
-		compileCountDependableComponents()
+	const markup = compile({ todos }) + compileCountDependableComponents()
 	response.send(markup)
 })
 router.post('/todos/mark-as-uncompleted/:id', (request, response) => {
-	todoList.markAsUncompleted(request.params.id)
+	const todos = todoList.markAsUncompleted(request.params.id)
 	const compile = pug.compileFile(path.join(componentPath, 'todo-list.pug'))
-	const markup =
-		compile({ todos: todoList.filter(todoList.lastAppliedFilter) }) +
-		compileCountDependableComponents()
+	const markup = compile({ todos }) + compileCountDependableComponents()
 	response.send(markup)
 })
 

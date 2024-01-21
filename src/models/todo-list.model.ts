@@ -6,7 +6,15 @@ export class TodoList {
 		new TodoItem('and salmon'),
 	]
 
-	lastAppliedFilter: string
+	appliedFilter: string
+
+	get filteredTodos() {
+		if (!this.appliedFilter) return this.todos
+
+		return this.todos.filter(todo =>
+			this.appliedFilter === 'active' ? !todo.completed : todo.completed
+		)
+	}
 
 	count() {
 		const all = this.todos.length
@@ -21,28 +29,23 @@ export class TodoList {
 	}
 
 	filter(filter?: string) {
-		this.lastAppliedFilter = filter
-
-		if (!filter) return this.todos
-
-		return this.todos.filter(todo =>
-			filter === 'active' ? !todo.completed : todo.completed
-		)
+		this.appliedFilter = filter
+		return this.filteredTodos
 	}
 
 	markAllAsCompleted() {
 		this.todos.forEach(todo => todo.markAsCompleted())
-		return this.todos
+		return this.filteredTodos
 	}
 
 	clearCompleted() {
 		this.todos = this.todos.filter(todo => !todo.completed)
-		return this.todos
+		return this.filteredTodos
 	}
 
 	clear() {
 		this.todos = []
-		return this.todos
+		return this.filteredTodos
 	}
 
 	add(name: string) {
@@ -52,15 +55,13 @@ export class TodoList {
 	}
 
 	markAsCompleted(id: string) {
-		const todo = this.todos.find(todo => todo.id === id)
-		todo?.markAsCompleted()
-		return todo
+		this.todos.find(todo => todo.id === id)?.markAsCompleted()
+		return this.filteredTodos
 	}
 
 	markAsUncompleted(id: string) {
-		const todo = this.todos.find(todo => todo.id === id)
-		todo?.markAsUncompleted()
-		return todo
+		this.todos.find(todo => todo.id === id)?.markAsUncompleted()
+		return this.filteredTodos
 	}
 
 	rename(id: string, name: string) {

@@ -26,6 +26,11 @@ export class TodoList {
 		)
 	}
 
+	markAllAsCompleted() {
+		this.todos.forEach(todo => todo.markAsCompleted())
+		return this.todos
+	}
+
 	clearCompleted() {
 		this.todos = this.todos.filter(todo => !todo.completed)
 		return this.todos

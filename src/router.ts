@@ -60,6 +60,14 @@ router.post('/todos/update/:id', (request, response) => {
 	response.send(markup)
 })
 
+router.post('/todos/mark-all-as-completed', (request, response) => {
+	const todos = todoList.markAllAsCompleted()
+	const compile = pug.compileFile(path.join(componentPath, 'todo-list.pug'))
+
+	const markup = compile({ todos }) + compileFilterComponent()
+	response.send(markup)
+})
+
 router.post('/todos/clear-completed', (request, response) => {
 	const todos = todoList.clearCompleted()
 	const compile = pug.compileFile(path.join(componentPath, 'todo-list.pug'))

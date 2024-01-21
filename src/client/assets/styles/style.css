@@ -18,7 +18,7 @@
 	align-items: center;
 	padding: 0;
 	height: unset;
-	min-height: 2rem;
+	min-height: 40px;
 	aspect-ratio: 1;
 	font-size: 1.25rem;
 }
@@ -38,7 +38,16 @@
 	align-items: center;
 	margin-block-end: 32px;
 }
-
+.add-todo-form-input:invalid + .add-todo-form-button,
+.edit-todo-form-input:invalid + .edit-todo-form-button {
+	opacity: 0.65;
+}
+.edit-todo-form.box {
+	margin-bottom: 0.5rem;
+}
+.edit-todo-form.box {
+	padding-inline-start: 8px;
+}
 .list-actions {
 	margin-block-start: 2rem;
 	gap: 0.5rem;

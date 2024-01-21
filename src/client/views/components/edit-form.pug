@@ -1,7 +1,7 @@
 form#edit-form.edit-todo-form.box(hx-post='/todos/update/' + todo.id, hx-swap='outerHTML')
 
-    input.input(type='text', name='todoName', value=todo.name)
+    input.input.edit-todo-form-input(type='text', required='true', name='todoName', value=todo.name)
 
-    button.add-todo-form-button.button.is-success(type='submit') save
+    button.edit-todo-form-button.button.is-success(type='submit') save
 
-    button.add-todo-form-button.button.is-light(hx-post='/todos/cancel-edit/' + todo.id, hx-target='#edit-form') cancel
+    button.edit-todo-form-button.button.is-light(hx-post='/todos/cancel-edit/' + todo.id, hx-target='#edit-form') cancel

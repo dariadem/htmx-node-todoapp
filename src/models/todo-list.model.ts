@@ -1,10 +1,7 @@
 import { TodoItem } from './todo-item.model'
 
 export class TodoList {
-	todos: TodoItem[] = [
-		new TodoItem('test todo 1'),
-		new TodoItem('and salmon'),
-	]
+	todos: TodoItem[] = []
 
 	appliedFilter: string
 
@@ -45,6 +42,7 @@ export class TodoList {
 
 	clear() {
 		this.todos = []
+		this.appliedFilter = undefined
 		return this.filteredTodos
 	}
 

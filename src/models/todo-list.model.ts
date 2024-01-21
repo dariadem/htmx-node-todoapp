@@ -54,6 +54,12 @@ export class TodoList {
 		return todo
 	}
 
+	rename(id: string, name: string) {
+		const todo = this.todos.find(todo => todo.id === id)
+		todo?.rename(name)
+		return todo
+	}
+
 	delete(id: string) {
 		this.todos = this.todos.filter(todo => todo.id !== id)
 	}

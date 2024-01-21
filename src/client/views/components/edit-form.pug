@@ -1,0 +1,8 @@
+form#edit-form.edit-todo-form.box(hx-post='/todos/update/' + todo.id, hx-swap='outerHTML')
+
+    input.input(type='text', name='todoName', value=todo.name)
+
+    button.add-todo-form-button.button.is-success(type='submit') Save
+
+    //- TODO add cancel button
+    //- button.add-todo-form-button.button.is-light(hx-post='/todos/edit/cancel', ) cancel

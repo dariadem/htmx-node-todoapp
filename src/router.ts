@@ -42,6 +42,24 @@ router.post('/todos/add', (request, response) => {
 	response.send(markup)
 })
 
+router.get('/todos/edit/:id', (request, response) => {
+	const todo = todoList.todos.find(todo => todo.id === request.params.id)
+
+	const compile = pug.compileFile(path.join(componentPath, 'edit-form.pug'))
+	const markup = compile({ todo })
+
+	response.send(markup)
+})
+
+router.post('/todos/update/:id', (request, response) => {
+	const todo = todoList.rename(request.params.id, request.body.todoName)
+
+	const compile = pug.compileFile(path.join(componentPath, 'todo-item.pug'))
+	const markup = compile({ todo })
+
+	response.send(markup)
+})
+
 router.post('/todos/clear-completed', (request, response) => {
 	const todos = todoList.clearCompleted()
 	const compile = pug.compileFile(path.join(componentPath, 'todo-list.pug'))

@@ -1,7 +1,11 @@
 li.todo-item.box(id='todo-' + todo.id, class={completed: todo.completed === true})
 
-    .todo-item-content
-        p #{todo.name}
+    if todo.completed
+        .todo-item-content
+            p #{todo.name}
+    else
+        .todo-item-content(hx-get='/todos/edit/' + todo.id, hx-target='#todo-' + todo.id, hx-swap='outerHTML')
+            p #{todo.name}
 
     .todo-item-actions
         if todo.completed

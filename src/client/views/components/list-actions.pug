@@ -1,10 +1,20 @@
-#list-actions.list-actions.is-flex.is-justify-content-end(hx-target='#todo-list', hx-swap='outerHTML', hx-swap-oob='true')
+#list-actions.list-actions.is-flex.is-justify-content-end(
+    hx-target='#todo-list', 
+    hx-swap='outerHTML', 
+    hx-swap-oob='true'
+)
 
     if count.active !== 0
-        button.button.is-primary.is-light.is-small(hx-post='/todos/mark-all-as-completed') complete all
+        button.button.is-primary.is-light.is-small(
+            hx-post=Command.MarkAllAsCompleted
+        ) complete all
 
     if count.completed !== 0
-        button.button.is-warning.is-light.is-small(hx-post='/todos/clear-completed') clear completed
+        button.button.is-warning.is-light.is-small(
+            hx-post=Command.ClearCompleted
+        ) clear completed
 
     if count.all !== 0
-        button.button.is-danger.is-light.is-small(hx-post='/todos/clear') clear all
+        button.button.is-danger.is-light.is-small(
+            hx-post=Command.ClearAll
+        ) clear all

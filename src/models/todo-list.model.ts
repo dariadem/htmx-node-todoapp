@@ -57,8 +57,8 @@ export class TodoList {
 		return this.filteredTodos
 	}
 
-	markAsUncompleted(id: string) {
-		this.todos.find(todo => todo.id === id)?.markAsUncompleted()
+	markAsActive(id: string) {
+		this.todos.find(todo => todo.id === id)?.markAsActive()
 		return this.filteredTodos
 	}
 

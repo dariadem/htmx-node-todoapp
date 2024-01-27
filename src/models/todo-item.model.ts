@@ -16,7 +16,7 @@ export class TodoItem {
 		this.completed = true
 	}
 
-	markAsUncompleted() {
+	markAsActive() {
 		this.completed = false
 	}
 

@@ -1,19 +1,26 @@
-#filter.todo-filter.tabs.is-toggle.is-fullwidth(hx-swap-oob='true')
-    ul 
+#filter.todo-filter.tabs.is-toggle.is-fullwidth(
+    hx-swap-oob='true'
+    hx-target='#todo-list',
+    hx-swap='outerHTML'
+)
+    ul
         li(class={'is-active': filter === undefined})
 
-            a(hx-get='/todos', hx-target='#todo-list', hx-swap='outerHTML') all&nbsp;
-            
+            a(hx-get=Command.All)
+                | all&nbsp;
+
                 span.count (#{count.all})
 
-        li(class={'is-active': filter === 'active'})
+        li(class={'is-active': filter === Filter.Active})
 
-            a(hx-get='/todos?filter=active', hx-target='#todo-list', hx-swap='outerHTML') active&nbsp;
+            a(hx-get=Command.Active) 
+                | active&nbsp;
 
                 span.count (#{count.active})
 
-        li(class={'is-active': filter === 'completed'})
+        li(class={'is-active': filter === Filter.Completed})
 
-            a(hx-get='/todos?filter=completed', hx-target='#todo-list', hx-swap='outerHTML') completed&nbsp;
+            a(hx-get=Command.Completed)
+                | completed&nbsp;
 
                 span.count (#{count.completed})

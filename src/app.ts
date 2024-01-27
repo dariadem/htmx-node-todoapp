@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'path'
-import { router } from './router'
+import { router } from './routes/todo-list-router'
 
 const PORT = process.env.PORT || 3500
 

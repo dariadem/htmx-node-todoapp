@@ -1,20 +1,36 @@
-li.todo-item.box(id='todo-' + todo.id, class={completed: todo.completed === true})
+li.todo-item.box(
+    id='todo-' + todo.id, 
+    class={completed: todo.completed === true}
+)
 
     if todo.completed
         .todo-item-content
             p #{todo.name}
     else
-        .todo-item-content(hx-get='/todos/edit/' + todo.id, hx-target='#todo-' + todo.id, hx-swap='outerHTML')
+        .todo-item-content(
+            hx-get=Command.Edit + todo.id, 
+            hx-target='#todo-' + todo.id, 
+            hx-swap='outerHTML'
+        )
             p #{todo.name}
 
-    .todo-item-actions
+    .todo-item-actions(hx-swap='outerHTML')
         if todo.completed
-            button.button.is-rounded.is-success(hx-post='/todos/mark-as-uncompleted/' + todo.id, hx-target='#todo-list', hx-swap='outerHTML')
+            button.button.is-rounded.is-success(
+                hx-post=Command.MarkAsActive + todo.id, 
+                hx-target='#todo-list'
+            )
                 span &check;
         else
-            button.button.is-rounded.is-success.is-outlined.is-light(hx-post='/todos/mark-as-completed/' + todo.id, hx-target='#todo-list', hx-swap='outerHTML')
+            button.button.is-rounded.is-success.is-outlined.is-light(
+                hx-post=Command.MarkAsCompleted + todo.id, 
+                hx-target='#todo-list'
+            )
                 span &check;
 
-        button.todo-item-delete-button.button.is-rounded.is-danger.is-outlined(hx-delete='/todos/' + todo.id, hx-target='#todo-' + todo.id, hx-swap='outerHTML')
+        button.todo-item-delete-button.button.is-rounded.is-danger.is-outlined(
+            hx-delete=Command.Delete + todo.id, 
+            hx-target='#todo-' + todo.id
+        )
             span &#128473;
     

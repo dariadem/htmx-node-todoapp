@@ -1,14 +1,14 @@
 import pug from 'pug'
 import { Request, Response } from 'express'
 import { TodoList } from '../models/todo-list.model'
-import { Filter, Command } from '../routes/router.utils'
+import { Filter, Command, formatCommand } from '../routes/router.utils'
 import { components } from './components.utils'
 
 const todoList = new TodoList()
 
 function compile(component: string, data: Record<string, any> = {}) {
 	const compileFile = pug.compileFile(component)
-	return compileFile({ ...data, Command, Filter })
+	return compileFile({ ...data, Command, Filter, formatCommand })
 }
 
 function compileCountDependableComponents(
@@ -28,6 +28,7 @@ export function getIndex(_req: Request, res: Response) {
 		count: todoList.count(),
 		Command,
 		Filter,
+		formatCommand,
 	})
 }
 

@@ -1,5 +1,5 @@
 form#edit-form.edit-todo-form.box(
-    hx-post=Command.Update + todo.id, 
+    hx-post=formatCommand(Command.Update, todo.id), 
     hx-swap='outerHTML'
 )
 
@@ -15,6 +15,6 @@ form#edit-form.edit-todo-form.box(
     ) save
 
     button.edit-todo-form-button.button.is-light(
-        hx-post=Command.CancelEditing + todo.id, 
+        hx-post=formatCommand(Command.CancelEditing, todo.id), 
         hx-target='#edit-form'
     ) cancel

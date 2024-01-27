@@ -1,24 +1,30 @@
 import express from 'express'
-import { Route } from './router.utils'
+import { formatRoute, Command } from './router.utils'
 import * as controller from '../controllers/todo-list.controller'
 
 const router = express.Router()
 
-router.get(Route.Index, controller.getIndex)
-router.get(Route.All, controller.getTodoList)
+router.get(Command.Index, controller.getIndex)
+router.get(Command.All, controller.getTodoList)
 
-router.get(Route.Edit, controller.editTodo)
-router.post(Route.CancelEditing, controller.cancelEditingTodo)
+router.get(formatRoute(Command.Edit, 'id'), controller.editTodo)
+router.post(Command.CancelEditing, controller.cancelEditingTodo)
 
-router.post(Route.MarkAllAsCompleted, controller.markAllAsCompleted)
-router.post(Route.ClearCompleted, controller.clearCompleted)
-router.post(Route.ClearAll, controller.clearAll)
+router.post(Command.MarkAllAsCompleted, controller.markAllAsCompleted)
+router.post(Command.ClearCompleted, controller.clearCompleted)
+router.post(Command.ClearAll, controller.clearAll)
 
-router.post(Route.Add, controller.addTodo)
-router.post(Route.Update, controller.updateTodo)
-router.post(Route.MarkAsCompleted, controller.markTodoAsCompleted)
-router.post(Route.MarkAsActive, controller.markTodoAsActive)
-router.delete(Route.Delete, controller.deleteTodo)
+router.post(Command.Add, controller.addTodo)
+router.post(formatRoute(Command.Update, 'id'), controller.updateTodo)
+router.post(
+	formatRoute(Command.MarkAsCompleted, 'id'),
+	controller.markTodoAsCompleted
+)
+router.post(
+	formatRoute(Command.MarkAsActive, 'id'),
+	controller.markTodoAsActive
+)
+router.delete(formatRoute(Command.Delete, 'id'), controller.deleteTodo)
 
 router.get('/*', (_req, res) => {
 	res.status(404).type('txt').send('404 not found')

@@ -12,10 +12,12 @@ body {
 }
 
 .todo-item.box {
+	margin-bottom: 0.5rem;
+}
+.todo-item-body {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	margin-bottom: 0.5rem;
 }
 .todo-item-content {
 	flex: 1;
@@ -44,22 +46,20 @@ body {
 	margin-top: -3px;
 	font-size: 1rem;
 }
-.add-todo-form,
-.edit-todo-form {
+.add-todo-form {
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
 	margin-block-end: 32px;
 }
+.edit-todo-form {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+}
 .add-todo-form-input:invalid + .add-todo-form-button,
 .edit-todo-form-input:invalid + .edit-todo-form-button {
 	opacity: 0.65;
-}
-.edit-todo-form.box {
-	margin-bottom: 0.5rem;
-}
-.edit-todo-form.box {
-	padding-inline-start: 8px;
 }
 .list-actions {
 	margin-block-start: 2rem;

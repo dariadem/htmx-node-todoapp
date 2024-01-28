@@ -1,0 +1,19 @@
+.todo-item-actions(hx-swap='outerHTML')
+    if todo.completed
+        button.button.is-rounded.is-success(
+            hx-post=formatCommand(Command.MarkAsActive, todo.id), 
+            hx-target='#todo-list'
+        )
+            span &check;
+    else
+        button.button.is-rounded.is-success.is-outlined.is-light(
+            hx-post=formatCommand(Command.MarkAsCompleted, todo.id), 
+            hx-target='#todo-list'
+        )
+            span &check;
+
+    button.todo-item-delete-button.button.is-rounded.is-danger.is-outlined(
+        hx-delete=formatCommand(Command.Delete, todo.id), 
+        hx-target='#todo-' + todo.id
+    )
+        span &#128473;

@@ -1,6 +1,10 @@
-form#edit-form.edit-todo-form.box(
+form.edit-todo-form(
     hx-post=formatCommand(Command.Update, todo.id), 
+    hx-target='#todo-' + todo.id
     hx-swap='outerHTML'
+
+    x-on:click.outside='edited = false'
+    x-on:htmx:after-on-load='edited = false'
 )
 
     input.input.edit-todo-form-input(
@@ -15,6 +19,6 @@ form#edit-form.edit-todo-form.box(
     ) save
 
     button.edit-todo-form-button.button.is-light(
-        hx-post=formatCommand(Command.CancelEditing, todo.id), 
-        hx-target='#edit-form'
+        type='button'
+        x-on:click='edited = false'
     ) cancel

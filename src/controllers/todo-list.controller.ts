@@ -56,20 +56,6 @@ export function addTodo(req: Request, res: Response) {
 	res.send(markup)
 }
 
-export function editTodo(req: Request, res: Response) {
-	const todo = todoList.todos.find(todo => todo.id === req.params.id)
-
-	const markup = compile(Component.EditForm, { todo })
-	res.send(markup)
-}
-
-export function cancelEditingTodo(req: Request, res: Response) {
-	const todo = todoList.todos.find(todo => todo.id === req.params.id)
-
-	const markup = compile(Component.TodoItem, { todo })
-	res.send(markup)
-}
-
 export function updateTodo(req: Request, res: Response) {
 	const todo = todoList.rename(req.params.id, req.body.todoName)
 

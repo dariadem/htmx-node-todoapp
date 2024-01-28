@@ -4,7 +4,7 @@ form#add-form.add-todo-form(
     hx-swap='outerHTML', 
 
     x-data='{ inputValue: `` }'
-    x-on:htmx:after-on-load.camel='inputValue = ``'
+    x-on:htmx:after-on-load='inputValue = ``'
 )
 
     input.add-todo-form-input.input.is-medium(

@@ -7,9 +7,6 @@ const router = express.Router()
 router.get(Command.Index, controller.getIndex)
 router.get(Command.All, controller.getTodoList)
 
-router.get(formatRoute(Command.Edit, 'id'), controller.editTodo)
-router.post(Command.CancelEditing, controller.cancelEditingTodo)
-
 router.post(Command.MarkAllAsCompleted, controller.markAllAsCompleted)
 router.post(Command.ClearCompleted, controller.clearCompleted)
 router.post(Command.ClearAll, controller.clearAll)

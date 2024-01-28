@@ -2,7 +2,9 @@ form#add-form.add-todo-form(
     hx-post=Command.Add, 
     hx-target='#todo-list', 
     hx-swap='outerHTML', 
-    hx-swap-oob='true'
+
+    x-data='{ inputValue: `` }'
+    x-on:htmx:after-on-load.camel='inputValue = ``'
 )
 
     input.add-todo-form-input.input.is-medium(
@@ -10,6 +12,8 @@ form#add-form.add-todo-form(
         name='todoName', 
         placeholder='what do you need to do?', 
         required='true'
+
+        x-model.lazy='inputValue'
     )
     
     button.add-todo-form-button.button.is-medium.is-info(

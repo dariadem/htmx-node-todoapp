@@ -50,10 +50,8 @@ export function addTodo(req: Request, res: Response) {
 	const listMarkup = compile(Component.TodoList, {
 		todos: todoList.filteredTodos,
 	})
-	const addFormMarkup = compile(Component.AddForm)
 
-	const markup =
-		listMarkup + addFormMarkup + compileCountDependableComponents()
+	const markup = listMarkup + compileCountDependableComponents()
 
 	res.send(markup)
 }
